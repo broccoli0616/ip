@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Broccoli {
@@ -5,12 +6,14 @@ public class Broccoli {
     private int count = 60;
     private StringBuilder horizontalLine;
     private Scanner scanner;
+    private ArrayList<String> taskList;
 
     public Broccoli() {
         this.line = '-';
         this.count = 60;
         this.scanner = new Scanner(System.in);   // give access to whatever the user type
         this.horizontalLine = new StringBuilder();
+        this.taskList = new ArrayList<>();
     }
 
     public void setHorizontalLine() {
@@ -37,12 +40,27 @@ public class Broccoli {
                 exiting();
                 break;
             }
-            System.out.println(horizontalLine.toString());
-            System.out.println(task);
-            System.out.println(horizontalLine.toString());
 
+            if(task.equals("list")){
+                displayList();
+                continue;
+            }
+            System.out.println(horizontalLine.toString());
+            System.out.println("added:" + task);
+            System.out.println(horizontalLine.toString());
+            this.taskList.add(task);
         }
     }
+    public void displayList(){
+        int counter = 1;
+        System.out.println(horizontalLine.toString());
+        for(String task : this.taskList) {
+            System.out.println(counter + ". " + task);
+            counter++;
+        }
+        System.out.println(horizontalLine.toString());
+    }
+
     public static void main(String[] args) {
      Broccoli broccoli = new Broccoli();
      broccoli.setHorizontalLine();
