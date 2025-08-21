@@ -50,11 +50,28 @@ public class Broccoli {
                 continue;
             }
             if(task.equals("mark")){
-                mark();
+                try{
+                mark();}
+                catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }
                 continue;
             }
             if(task.equals("unmark")){
-                unmark();
+                try{
+                unmark();}
+                catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }
+                continue;
+            }
+
+            if(task.equals("delete")){
+                try{
+                delete();}
+                catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }
                 continue;
             }
             Task newTask = null;
@@ -94,7 +111,11 @@ public class Broccoli {
         //Scanner scanner1 = new Scanner(System.in);
         int number = scanner.nextInt();
         scanner.nextLine();
-        Task markTask = taskList.get(number - 1);
+        int index = number - 1;
+        if(index >= taskList.stream().count()){
+            throw new IllegalArgumentException("Task does not exist, please re-enter a valid one!");
+        }
+        Task markTask = taskList.get(index);
         markTask.markAsDone();
         System.out.println("Nice! I've marked this task as done:\n" + markTask.toString());
     }
@@ -110,9 +131,35 @@ public class Broccoli {
       //  Scanner scanner1 = new Scanner(System.in);
         int number = scanner.nextInt();
         scanner.nextLine();
-        Task markTask = taskList.get(number - 1);
+        int index = number - 1;
+        if(index >= taskList.stream().count()){
+            throw new IllegalArgumentException("Task does not exist, please re-enter a valid one!");
+        }
+        Task markTask = taskList.get(index);
         markTask.markAsUndone();
         System.out.println("OK, I've marked this task as not done yet:\n" + markTask.toString());
+    }
+
+    public void delete(){
+        int counter = 1;
+        System.out.println("Which task would you like to delete? Please enter the number:");
+        for(Task task : this.taskList) {
+            System.out.println(counter + ". " + task.toString());
+            counter++;
+        }
+        System.out.println(horizontalLine.toString());
+        //  Scanner scanner1 = new Scanner(System.in);
+        int number = scanner.nextInt();
+        scanner.nextLine();
+        int index = number - 1;
+        if(index >=taskList.stream().count()){
+            throw new IllegalArgumentException("Task does not exist, please re-enter a valid one!");
+        }
+        Task markTask = taskList.get(index);
+        taskList.remove(index);
+        System.out.println("Noted. I've removed this task:\n" + markTask.toString());
+        int undone = (int) taskList.stream().filter(a -> !a.getDone()).count();
+        System.out.println("Hurry up! You have " + undone + " tasks unfinished!");
     }
 
     public static void main(String[] args) {

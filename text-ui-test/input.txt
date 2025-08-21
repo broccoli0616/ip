@@ -8,4 +8,13 @@ unmark
 2
 list
 blah
+deadline
+todo
+event
+deadline buy food
+event birthday party /from 6pm
+delete
+2
+mark
+6
 bye
