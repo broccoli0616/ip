@@ -1,3 +1,5 @@
+import Tasks.Task;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,30 +42,38 @@ public class Broccoli {
                 exiting();
                 break;
             }
-
             if(task.equals("list")){
                 displayList();
                 continue;
             }
-
             if(task.equals("mark")){
                 mark();
                 continue;
             }
-
             if(task.equals("unmark")){
                 unmark();
                 continue;
             }
-            System.out.println(horizontalLine.toString());
-            System.out.println("added:" + task.toString());
-            System.out.println(horizontalLine.toString());
-            this.taskList.add(new Task(task));
+            Task newTask = null;
+            try{
+             newTask = Task.checkTask(task);
+            } catch(RuntimeException e){
+                System.out.println(e.getMessage());
+                continue;
+            }
+                this.taskList.add(newTask);
+                System.out.println(horizontalLine.toString());
+                System.out.println("Got it. I've added this task:\n" + newTask.toString());
+                int undone = (int) taskList.stream().filter(a -> !a.getDone()).count();
+                System.out.println("Hurry up! You have " + undone + " tasks unfinished!");
+                System.out.println(horizontalLine.toString());
+
         }
     }
     public void displayList(){
         int counter = 1;
         System.out.println(horizontalLine.toString());
+        System.out.println("Quickly go and finish all the UNDONE tasks!");
         for(Task task : this.taskList) {
             System.out.println(counter + ". " + task.toString());
             counter++;
