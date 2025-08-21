@@ -1,4 +1,7 @@
 import Tasks.Task;
+import Tasks.DeadlineTask;
+import Tasks.TodoTask;
+import Tasks.EventTask;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -27,11 +30,11 @@ public class Broccoli {
     }
 
     public void greeting() {
-        System.out.println("Hello! I'm Broccoli\n" + "What can I do for you?\n" + horizontalLine.toString());
+        System.out.println("Hello! Hello! Hello! I'm Broccoli, Your Green Task Buddy!\n" + "Tell me what you gonna do and I will help you track them!\n" + horizontalLine.toString());
     }
 
     public void exiting() {
-        System.out.println("Bye.Hope to see you again soon!\n" + horizontalLine.toString());
+        System.out.println("Bye! Wish you come back with tasks done!\n" + horizontalLine.toString());
     }
 
     public void echo() {
@@ -88,11 +91,12 @@ public class Broccoli {
             counter++;
         }
         System.out.println(horizontalLine.toString());
-        Scanner scanner1 = new Scanner(System.in);
-        int number = scanner1.nextInt();
+        //Scanner scanner1 = new Scanner(System.in);
+        int number = scanner.nextInt();
+        scanner.nextLine();
         Task markTask = taskList.get(number - 1);
         markTask.markAsDone();
-        System.out.println("Nice! I've marked this task as done: \n" + markTask.toString());
+        System.out.println("Nice! I've marked this task as done:\n" + markTask.toString());
     }
 
     public void unmark(){
@@ -103,11 +107,12 @@ public class Broccoli {
             counter++;
         }
         System.out.println(horizontalLine.toString());
-        Scanner scanner1 = new Scanner(System.in);
-        int number = scanner1.nextInt();
+      //  Scanner scanner1 = new Scanner(System.in);
+        int number = scanner.nextInt();
+        scanner.nextLine();
         Task markTask = taskList.get(number - 1);
         markTask.markAsUndone();
-        System.out.println("OK, I've marked this task as not done yet: \n" + markTask.toString());
+        System.out.println("OK, I've marked this task as not done yet:\n" + markTask.toString());
     }
 
     public static void main(String[] args) {

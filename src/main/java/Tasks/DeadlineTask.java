@@ -2,11 +2,12 @@ package Tasks;
 
 public class DeadlineTask extends Task{
         private String dueTime;
+        private String description;
 
         public DeadlineTask(String description) {
             String[] information = description.split("/by ");
             String taskDescription = information[0];
-            super(taskDescription);
+            this.description = taskDescription;
             this.dueTime = information[1];
         }
         @Override

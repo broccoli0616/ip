@@ -30,7 +30,7 @@ public class Task {
             Task eventTask = new EventTask(description);
             return eventTask;
         } else {
-            throw new RuntimeException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event");
+            throw new RuntimeException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event)");
         }
     }
 

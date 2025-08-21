@@ -3,12 +3,13 @@ package Tasks;
 public class EventTask extends Task {
    private String startTime;
    private String endTime;
+   private String description;
 
 
 public EventTask(String description) {
       String[] information = description.split("/from");
       String taskDescription = information[0];
-      super(taskDescription);
+      this.description = taskDescription;
       String[] timing = information[1].split("/to ");
       this.startTime = timing[0];
       this.endTime = timing[1];
