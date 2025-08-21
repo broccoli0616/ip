@@ -6,7 +6,7 @@ public class Broccoli {
     private int count = 60;
     private StringBuilder horizontalLine;
     private Scanner scanner;
-    private ArrayList<String> taskList;
+    private ArrayList<Task> taskList;
 
     public Broccoli() {
         this.line = '-';
@@ -45,20 +45,59 @@ public class Broccoli {
                 displayList();
                 continue;
             }
+
+            if(task.equals("mark")){
+                mark();
+                continue;
+            }
+
+            if(task.equals("unmark")){
+                unmark();
+                continue;
+            }
             System.out.println(horizontalLine.toString());
-            System.out.println("added:" + task);
+            System.out.println("added:" + task.toString());
             System.out.println(horizontalLine.toString());
-            this.taskList.add(task);
+            this.taskList.add(new Task(task));
         }
     }
     public void displayList(){
         int counter = 1;
         System.out.println(horizontalLine.toString());
-        for(String task : this.taskList) {
-            System.out.println(counter + ". " + task);
+        for(Task task : this.taskList) {
+            System.out.println(counter + ". " + task.toString());
             counter++;
         }
         System.out.println(horizontalLine.toString());
+    }
+    public void mark(){
+        int counter = 1;
+        System.out.println("Which task would you like to mark as done? Please enter the number:");
+        for(Task task : this.taskList) {
+            System.out.println(counter + ". " + task.toString());
+            counter++;
+        }
+        System.out.println(horizontalLine.toString());
+        Scanner scanner1 = new Scanner(System.in);
+        int number = scanner1.nextInt();
+        Task markTask = taskList.get(number - 1);
+        markTask.markAsDone();
+        System.out.println("Nice! I've marked this task as done: \n" + markTask.toString());
+    }
+
+    public void unmark(){
+        int counter = 1;
+        System.out.println("Which task would you like to unmark as done? Please enter the number:");
+        for(Task task : this.taskList) {
+            System.out.println(counter + ". " + task.toString());
+            counter++;
+        }
+        System.out.println(horizontalLine.toString());
+        Scanner scanner1 = new Scanner(System.in);
+        int number = scanner1.nextInt();
+        Task markTask = taskList.get(number - 1);
+        markTask.markAsUndone();
+        System.out.println("OK, I've marked this task as not done yet: \n" + markTask.toString());
     }
 
     public static void main(String[] args) {
