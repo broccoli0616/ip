@@ -7,9 +7,19 @@ public class EventTask extends Task {
 
 
 public EventTask(String description) {
+    String test = description;
+    if(test == null|| description.trim().isEmpty()){
+        throw new IllegalArgumentException("Please enter the name of the task!");
+    }
+    if(!description.contains("/from")){
+        throw new IllegalArgumentException("Please enter the starting time!");
+    }
       String[] information = description.split("/from");
       String taskDescription = information[0];
       this.description = taskDescription;
+    if(!description.contains("/to")){
+        throw new IllegalArgumentException("Please enter the ending time!");
+    }
       String[] timing = information[1].split("/to ");
       this.startTime = timing[0];
       this.endTime = timing[1];

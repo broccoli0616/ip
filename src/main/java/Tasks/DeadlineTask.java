@@ -5,6 +5,13 @@ public class DeadlineTask extends Task{
         private String description;
 
         public DeadlineTask(String description) {
+            String test = description;
+            if(description == null|| test.trim().isEmpty()){
+                throw new IllegalArgumentException("Please enter the name of the task!");
+            }
+            if(!description.contains("/by")){
+                throw new IllegalArgumentException("Please enter the deadline!");
+            }
             String[] information = description.split("/by ");
             String taskDescription = information[0];
             this.description = taskDescription;
