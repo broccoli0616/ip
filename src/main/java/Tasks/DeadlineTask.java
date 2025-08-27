@@ -17,7 +17,21 @@ public class DeadlineTask extends Task{
             this.description = taskDescription;
             this.dueTime = information[1];
         }
-        @Override
+
+        public DeadlineTask(String description, String dueTime, boolean isDone) {
+            this.description = description;
+            this.dueTime = dueTime;
+            this.isDone = isDone;
+        }
+
+    @Override
+    public String taskText() {
+        String isComplete = this.isDone ? "1" : "0";
+        String taskText = "D" + " | " + isComplete + " | " + this.description + " | " + this.dueTime;
+        return taskText;
+    }
+
+    @Override
         public String toString(){
             return "[D] " + getStatusIcon() + this.description + "(by: " + dueTime+")";
         }

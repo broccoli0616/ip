@@ -24,6 +24,19 @@ public EventTask(String description) {
       this.startTime = timing[0];
       this.endTime = timing[1];
     }
+    public EventTask(String description, String startTime, String endTime, boolean isDone) {
+        this.description = description;
+        this.isDone = isDone;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    @Override
+    public String taskText() {
+        String isComplete = this.isDone ? "1" : "0";
+        String taskText = "T" + " | " + isComplete + " | " + this.description + " | " + this.startTime + "to" + this.endTime;
+        return taskText;
+    }
  @Override
  public String toString(){
      return "[E] " + getStatusIcon() + this.description + "(from: " + startTime + "to: " + endTime+")";

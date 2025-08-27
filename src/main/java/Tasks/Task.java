@@ -14,7 +14,42 @@ public class Task {
     }
 
     public boolean getDone() {
+
         return isDone;
+    }
+
+    public String taskText() {
+        String isComplete = this.isDone ? "1" : "0";
+        String taskText = "todo " + isComplete + " " + this.description;
+        return taskText;
+    }
+
+
+    public static Task parseTask(String task){
+        if(task.startsWith("T")){
+            String[] description = task.split(" \\| ");
+            String taskDescription = description[2];
+            boolean isDone = description[1].equals("0") ? false : true;
+            Task taskToAdd = new TodoTask(taskDescription, isDone);
+            return taskToAdd;
+        } else if(task.startsWith("D")){
+            String[] description = task.split(" \\| ");
+            String taskDescription = description[2];
+            boolean isDone =description[1].equals("0")? false : true;
+            String deadlineTime = description[3];
+            Task taskToAdd = new DeadlineTask(taskDescription,deadlineTime, isDone);
+            return taskToAdd;
+        } else if(task.startsWith("E")){
+            String[] description = task.split(" \\| ");
+            String taskDescription = description[2];
+            boolean isDone =description[1].equals("0")? false : true;
+            String eventTime = description[3];
+            String[] eventTime2 = eventTime.split("to");
+            Task taskToAdd = new EventTask(taskDescription, eventTime2[0], eventTime2[1],isDone);
+            return taskToAdd;
+        } else {
+            throw new RuntimeException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event)");
+        }
     }
     public static Task checkTask(String task) {
         if(task.startsWith("todo")){

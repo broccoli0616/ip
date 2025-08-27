@@ -10,6 +10,18 @@ public class TodoTask extends Task {
         this.description = description;
     }
 
+    public TodoTask(String description, boolean isDone) {
+        this.description = description;
+        this.isDone = isDone;
+    }
+
+    @Override
+    public String taskText() {
+        String isComplete = this.isDone ? "1" : "0";
+        String taskText = "T" + " | " + isComplete + " | " + this.description;
+        return taskText;
+    }
+
     @Override
     public String toString(){
         return "[T] " + getStatusIcon() + description;
