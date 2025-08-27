@@ -3,8 +3,16 @@ import Tasks.DeadlineTask;
 import Tasks.TodoTask;
 import Tasks.EventTask;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 
 public class Broccoli {
     private char line = '-';
@@ -12,13 +20,13 @@ public class Broccoli {
     private StringBuilder horizontalLine;
     private Scanner scanner;
     private ArrayList<Task> taskList;
-
     public Broccoli() {
         this.line = '-';
         this.count = 60;
         this.scanner = new Scanner(System.in);   // give access to whatever the user type
         this.horizontalLine = new StringBuilder();
         this.taskList = new ArrayList<>();
+        loadFromFile();
     }
 
     public void setHorizontalLine() {
@@ -82,6 +90,7 @@ public class Broccoli {
                 continue;
             }
                 this.taskList.add(newTask);
+                writeToFile();
                 System.out.println(horizontalLine.toString());
                 System.out.println("Got it. I've added this task:\n" + newTask.toString());
                 int undone = (int) taskList.stream().filter(a -> !a.getDone()).count();
@@ -117,6 +126,7 @@ public class Broccoli {
         }
         Task markTask = taskList.get(index);
         markTask.markAsDone();
+        writeToFile();
         System.out.println("Nice! I've marked this task as done:\n" + markTask.toString());
     }
 
@@ -137,6 +147,7 @@ public class Broccoli {
         }
         Task markTask = taskList.get(index);
         markTask.markAsUndone();
+        writeToFile();
         System.out.println("OK, I've marked this task as not done yet:\n" + markTask.toString());
     }
 
@@ -157,10 +168,49 @@ public class Broccoli {
         }
         Task markTask = taskList.get(index);
         taskList.remove(index);
+        writeToFile();
         System.out.println("Noted. I've removed this task:\n" + markTask.toString());
         int undone = (int) taskList.stream().filter(a -> !a.getDone()).count();
         System.out.println("Hurry up! You have " + undone + " tasks unfinished!");
     }
+
+      private void writeToFile() {
+        try {
+            Path data = Paths.get("./data");
+            if (!Files.exists(data)) {
+                Files.createDirectories(data);
+            }
+            FileWriter fw = new FileWriter("./data/broccoli.txt");
+            for(Task task : taskList){
+                String taskContent = task.taskText();
+                fw.write(taskContent + System.lineSeparator());
+            }
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
+      }
+
+      private void loadFromFile(){
+        try{
+            File file = new File("./data/broccoli.txt");
+            if(!file.exists()) {
+                return;
+            }
+            Scanner textScanner = new Scanner(file);
+            while(textScanner.hasNextLine()){
+                String content = textScanner.nextLine();
+                Task task = Task.parseTask(content);
+                if(task != null) {
+                    taskList.add(task);
+                }
+            }
+            textScanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
+      }
 
     public static void main(String[] args) {
      Broccoli broccoli = new Broccoli();
