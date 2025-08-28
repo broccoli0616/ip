@@ -1,4 +1,4 @@
-package Tasks;
+package Broccoli.Tasks;
 
 public class EventTask extends Task {
    private String startTime;

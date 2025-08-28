@@ -1,7 +1,6 @@
-package Tasks;
+package Broccoli.Tasks;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public class DeadlineTask extends Task{
         private String dueTime;
@@ -62,7 +61,7 @@ public class DeadlineTask extends Task{
         }
 
         public static void main(String[] args){
-            Task test = new Tasks.DeadlineTask("return book /by 03/12/2019/8pm");
+            Task test = new Broccoli.Tasks.DeadlineTask("return book /by 03/12/2019/8pm");
             System.out.println(test.toString());
         }
 

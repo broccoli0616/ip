@@ -1,6 +1,7 @@
-import Tasks.Task;
+package Broccoli;
 
-import java.util.ArrayList;
+import Broccoli.Tasks.Task;
+
 import java.util.Scanner;
 
 public class Parser {
@@ -18,7 +19,7 @@ public class Parser {
         String task = "";
         while(true) {
             task = scanner.nextLine();
-            if(task.equals("bye".trim())) {
+            if(task.trim().equals("bye")) {
                 this.userInterface.exiting();
                 break;
             }
@@ -26,7 +27,7 @@ public class Parser {
                 this.userInterface.displayList(taskList);
                 continue;
             }
-            if(task.equals("mark".trim())){
+            if(task.trim().equals("mark".trim())){
                 try{
                     this.userInterface.mark(taskList, storage);}
                 catch(RuntimeException e){
@@ -34,7 +35,7 @@ public class Parser {
                 }
                 continue;
             }
-            if(task.equals("unmark".trim())){
+            if(task.trim().equals("unmark".trim())){
                 try{
                     this.userInterface.unmark(taskList, storage);}
                 catch(RuntimeException e){
@@ -43,7 +44,7 @@ public class Parser {
                 continue;
             }
 
-            if(task.equals("delete".trim())){
+            if(task.trim().equals("delete".trim())){
                 try{
                     this.userInterface.delete(taskList, storage);}
                 catch(RuntimeException e){

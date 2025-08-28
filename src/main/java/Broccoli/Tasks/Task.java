@@ -1,4 +1,4 @@
-package Tasks;
+package Broccoli.Tasks;
 
 public class Task {
     protected String description;
@@ -101,7 +101,7 @@ public class Task {
         return getStatusIcon() + this.description;
     }
 //    public static void main(String[] args){
-//        Tasks.Tasks.Task task = new Tasks.Tasks.Task("do homework");
+//        Broccoli.Broccoli.Tasks.Broccoli.Broccoli.Tasks.Task task = new Broccoli.Broccoli.Tasks.Broccoli.Broccoli.Tasks.Task("do homework");
 //        System.out.println(task.toString());
 //    }
 }

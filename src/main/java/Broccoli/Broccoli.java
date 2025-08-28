@@ -1,7 +1,6 @@
-import Tasks.Task;
-import Tasks.DeadlineTask;
-import Tasks.TodoTask;
-import Tasks.EventTask;
+package Broccoli;
+
+import Broccoli.Tasks.Task;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,8 +15,10 @@ public class Broccoli {
     public Broccoli() {
         this.scanner = new Scanner(System.in);
         this.userInterface = new Ui();
-        this.tasklist = new TaskList(new ArrayList<Task>());
-        this.storage = new Storage(tasklist);
+        TaskList tasklist1 = new TaskList(new ArrayList<Task>());
+        this.storage = new Storage(tasklist1);
+        storage.loadFromFile();
+        this.tasklist = new TaskList(storage.getTaskList());
         this.parser = new Parser(storage, userInterface,scanner);
     }
 

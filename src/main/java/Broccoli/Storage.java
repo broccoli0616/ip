@@ -1,4 +1,6 @@
-import Tasks.Task;
+package Broccoli;
+
+import Broccoli.Tasks.Task;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -51,6 +53,10 @@ public class Storage {
         } catch (FileNotFoundException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }
+    }
+
+    public ArrayList<Task> getTaskList(){
+        return taskList.getList();
     }
 
 }

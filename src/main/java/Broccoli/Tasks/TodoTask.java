@@ -1,4 +1,4 @@
-package Tasks;
+package Broccoli.Tasks;
 
 public class TodoTask extends Task {
     private String description;
