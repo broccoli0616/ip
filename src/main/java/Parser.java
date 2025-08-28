@@ -1,0 +1,71 @@
+import Tasks.Task;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Parser {
+    private Storage storage;
+    private Scanner scanner;
+    private Ui userInterface;
+
+    public Parser(Storage storage, Ui userInterface, Scanner scanner){
+        this.storage = storage;
+        this.userInterface = userInterface;
+        this.scanner = scanner;
+    }
+
+    public void echo(TaskList taskList) {
+        String task = "";
+        while(true) {
+            task = scanner.nextLine();
+            if(task.equals("bye".trim())) {
+                this.userInterface.exiting();
+                break;
+            }
+            if(task.equals("list".trim())){
+                this.userInterface.displayList(taskList);
+                continue;
+            }
+            if(task.equals("mark".trim())){
+                try{
+                    this.userInterface.mark(taskList, storage);}
+                catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }
+                continue;
+            }
+            if(task.equals("unmark".trim())){
+                try{
+                    this.userInterface.unmark(taskList, storage);}
+                catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }
+                continue;
+            }
+
+            if(task.equals("delete".trim())){
+                try{
+                    this.userInterface.delete(taskList, storage);}
+                catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }
+                continue;
+            }
+            Task newTask = null;
+            try{
+                newTask = Task.checkTask(task);
+            } catch(RuntimeException e){
+                System.out.println(e.getMessage());
+                continue;
+            }
+            taskList.add(newTask);
+            this.storage.writeToFile();
+            System.out.println(userInterface.getHorizontalLine());
+            System.out.println("Got it. I've added this task:\n" + newTask.toString());
+            int undone = (int) taskList.getList().stream().filter(a -> !a.getDone()).count();
+            System.out.println("Hurry up! You have " + undone + " tasks unfinished!");
+            System.out.println(userInterface.getHorizontalLine().toString());
+
+        }
+    }
+}
