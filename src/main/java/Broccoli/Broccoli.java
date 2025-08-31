@@ -16,7 +16,7 @@ public class Broccoli {
         this.scanner = new Scanner(System.in);
         this.userInterface = new Ui();
         TaskList tasklist1 = new TaskList(new ArrayList<Task>());
-        this.storage = new Storage(tasklist1);
+        this.storage = new Storage(tasklist1, "./data/broccoli.txt");
         storage.loadFromFile();
         this.tasklist = new TaskList(storage.getTaskList());
         this.parser = new Parser(storage, userInterface,scanner);

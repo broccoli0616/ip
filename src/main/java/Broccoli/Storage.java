@@ -14,16 +14,20 @@ import java.util.Scanner;
 
 public class Storage {
     private TaskList taskList;
-    public Storage(TaskList taskList){
+    public String filePath;
+    public Storage(TaskList taskList, String filePath){
+
         this.taskList = taskList;
+        this.filePath = "./data/broccoli.txt";
     }
+
     public void writeToFile() {
         try {
             Path data = Paths.get("./data");
             if (!Files.exists(data)) {
                 Files.createDirectories(data);
             }
-            FileWriter fw = new FileWriter("./data/broccoli.txt");
+            FileWriter fw = new FileWriter(this.filePath);
             for(Task task : taskList.getList()){
                 String taskContent = task.taskText();
                 fw.write(taskContent + System.lineSeparator());
@@ -36,7 +40,7 @@ public class Storage {
 
     public void loadFromFile(){
         try{
-            File file = new File("./data/broccoli.txt");
+            File file = new File(this.filePath);
             if(!file.exists()) {
                 return;
             }
