@@ -1,7 +1,7 @@
 package Broccoli.Tasks;
 
 public class TodoTask extends Task {
-    private String description;
+   // private String description;
     public TodoTask(String description){
         String test = description;
         if(description == null || test.trim().isEmpty()){ //trim() removes white space
@@ -21,6 +21,8 @@ public class TodoTask extends Task {
         String taskText = "T" + " | " + isComplete + " | " + this.description;
         return taskText;
     }
+
+
 
     @Override
     public String toString(){

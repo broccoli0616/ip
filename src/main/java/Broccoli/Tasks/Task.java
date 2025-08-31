@@ -13,6 +13,10 @@ public class Task {
     public Task() {
     }
 
+   public String getDescription(){
+        return this.description;
+   }
+
     public boolean getDone() {
 
         return isDone;

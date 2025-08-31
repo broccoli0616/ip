@@ -2,7 +2,9 @@ package Broccoli;
 
 import Broccoli.Tasks.Task;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Ui {
     private Scanner scanner;
@@ -93,6 +95,23 @@ public void exiting() {
         System.out.println("Noted. I've removed this task:\n" + markTask.toString());
         int undone = (int) taskList.getList().stream().filter(a -> !a.getDone()).count();
         System.out.println("Hurry up! You have " + undone + " tasks unfinished!");
+    }
+    public void find(TaskList taskList, Storage storage){
+
+        System.out.println("Which task would you like to find? Please enter the key words:");
+        String keyWords = scanner.nextLine();
+
+        ArrayList<Task> taskList1 = (ArrayList<Task>) taskList.getList().stream().filter(task->task.getDescription().contains(keyWords)).collect(Collectors.toList());
+        System.out.println(getHorizontalLine());
+        if(taskList1.isEmpty()){
+            System.out.println("There is not matching tasks");
+        } else {
+            System.out.println("Here are the matching tasks in your list:\n");
+            TaskList matchedTasks = new TaskList(taskList1);
+            matchedTasks.printTask();
+//            int undone = (int) taskList.getList().stream().filter(a -> !a.getDone()).count();
+//            System.out.println("Hurry up! You have " + undone + " tasks unfinished!");
+        }
     }
         }
 
