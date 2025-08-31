@@ -4,6 +4,9 @@ import Broccoli.Tasks.Task;
 
 import java.util.Scanner;
 
+/**
+ * Handles user interface interactions and display formatting.
+ */
 public class Ui {
     private Scanner scanner;
     private String horizontalLine;
@@ -13,6 +16,11 @@ public class Ui {
         this.horizontalLine = getHorizontalLine();
     }
 
+    /**
+     * Returns a horizontal line string.
+     *
+     * @return A string of dashes.
+     */
     public String getHorizontalLine(){
         StringBuilder horizontal = new StringBuilder();
         int count = 60;
@@ -24,15 +32,24 @@ public class Ui {
       return horizontal.toString();
     }
 
-
+    /**
+     * Displays the greeting to the user.
+     */
  public void greeting() {
     System.out.println("Hello! Hello! Hello! I'm Broccoli.Broccoli, Your Green Task Buddy!\n" + "Tell me what you gonna do and I will help you track them!\n" + horizontalLine.toString());
 }
 
-public void exiting() {
-    System.out.println("Bye! Wish you come back with tasks done!\n" + this.horizontalLine);
+    /**
+     * Displays the goodbye message to the user.
+     */
+ public void exiting() {
+     System.out.println("Bye! Wish you come back with tasks done!\n" + this.horizontalLine);
 }
-
+    /**
+     * Displays all tasks in the task list.
+     *
+     * @param taskList The task list to display.
+     */
     public void displayList(TaskList taskList){
         System.out.println(horizontalLine.toString());
         System.out.println("Quickly go and finish all the UNDONE tasks!");
@@ -40,6 +57,12 @@ public void exiting() {
         System.out.println(horizontalLine.toString());
     }
 
+    /**
+     * Handles marking a task as done based on user input.
+     *
+     * @param taskList The task list containing the tasks available for user to mark.
+     * @param storage The storage component for saving changes.
+     */
     public void mark(TaskList taskList, Storage storage){
 
         System.out.println("Which task would you like to mark as done? Please enter the number:");
@@ -57,7 +80,12 @@ public void exiting() {
         storage.writeToFile();
         System.out.println("Nice! I've marked this task as done:\n" + markTask.toString());
     }
-
+    /**
+     * Handles unmarking a task as not done based on user input.
+     *
+     * @param taskList The task list containing the tasks available for user to unmark.
+     * @param storage The storage component for saving changes.
+     */
     public void unmark(TaskList taskList, Storage storage){
         System.out.println("Which task would you like to unmark as done? Please enter the number:");
          taskList.printTask();
@@ -75,8 +103,13 @@ public void exiting() {
         System.out.println("OK, I've marked this task as not done yet:\n" + markTask.toString());
     }
 
+    /**
+     * Handles deleting a task based on user input.
+     *
+     * @param taskList The task list containing the task to delete.
+     * @param storage The storage component for saving changes.
+     */
     public void delete(TaskList taskList, Storage storage){
-
         System.out.println("Which task would you like to delete? Please enter the number:");
        taskList.printTask();
        System.out.println(horizontalLine.toString());

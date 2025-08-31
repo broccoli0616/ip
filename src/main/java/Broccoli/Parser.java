@@ -4,6 +4,10 @@ import Broccoli.Tasks.Task;
 
 import java.util.Scanner;
 
+/**
+ * Handles parsing and processing of user input commands.
+ * Coordinates between userInterface and task storage operations.
+ */
 public class Parser {
     private Storage storage;
     private Scanner scanner;
@@ -15,6 +19,12 @@ public class Parser {
         this.scanner = scanner;
     }
 
+    /**
+     * Processes user input commands in a continuous loop until exit.
+     * Handles commands like list, mark, unmark, delete, and task addition.
+     *
+     * @param taskList The task list to operate on.
+     */
     public void echo(TaskList taskList) {
         String task = "";
         while(true) {

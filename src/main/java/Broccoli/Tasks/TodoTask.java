@@ -1,5 +1,9 @@
 package Broccoli.Tasks;
 
+/**
+ * Represents a simple todo task.
+ * Extends the base Task class.
+ */
 public class TodoTask extends Task {
     private String description;
     public TodoTask(String description){
@@ -15,6 +19,11 @@ public class TodoTask extends Task {
         this.isDone = isDone;
     }
 
+    /**
+     * Returns the formatted text representation for file storage.
+     *
+     * @return The todo task formatted as a string for storage.
+     */
     @Override
     public String taskText() {
         String isComplete = this.isDone ? "1" : "0";

@@ -4,7 +4,10 @@ import Broccoli.Tasks.Task;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * Represents the main application class that manages task tracking functionality.
+ * Initializes and coordinates the user interface, storage, parser, and task list components.
+ */
 public class Broccoli {
     private Ui userInterface;
     private Storage storage;
@@ -22,7 +25,12 @@ public class Broccoli {
         this.parser = new Parser(storage, userInterface,scanner);
     }
 
-
+    /**
+     * Starts the Broccoli task tracking application.
+     * Displays greeting and begins the main interaction loop.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         Broccoli broccoli = new Broccoli();
         System.out.println(broccoli.userInterface.getHorizontalLine());

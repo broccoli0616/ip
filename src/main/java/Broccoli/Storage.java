@@ -12,6 +12,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Manages data for task storage and retrieval.
+ * Handles loading from and writing to the data file.
+ */
 public class Storage {
     private TaskList taskList;
     public String filePath;
@@ -21,6 +25,9 @@ public class Storage {
         this.filePath = "./data/broccoli.txt";
     }
 
+    /**
+     * Writes all tasks in the task list to the storage file broccoli.txt.
+     */
     public void writeToFile() {
         try {
             Path data = Paths.get("./data");
@@ -38,6 +45,10 @@ public class Storage {
         }
     }
 
+    /**
+     * Loads tasks from the storage file into the task list.
+     * Returns if the file doesn't exist.
+     */
     public void loadFromFile(){
         try{
             File file = new File(this.filePath);

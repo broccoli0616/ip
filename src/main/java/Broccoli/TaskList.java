@@ -4,6 +4,10 @@ import Broccoli.Tasks.Task;
 
 import java.util.ArrayList;
 
+/**
+ * Manages tasks collection and operation.
+ * Provides methods to add, remove, and display tasks.
+ */
 public class TaskList {
     private ArrayList<Task> taskList;
 
@@ -19,6 +23,9 @@ public class TaskList {
         this.taskList.remove(index);
     }
 
+    /**
+     * Prints all tasks in the list with order .
+     */
     public void printTask() {
         int counter = 1;
         for(Task task : taskList) {

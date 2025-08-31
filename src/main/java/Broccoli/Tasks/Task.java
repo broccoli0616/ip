@@ -1,5 +1,8 @@
 package Broccoli.Tasks;
 
+/**
+ * Represents a basic task with completion status and description.
+ */
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -17,14 +20,23 @@ public class Task {
 
         return isDone;
     }
-
+    /**
+     * Returns the formatted text representation for file storage.
+     *
+     * @return The task formatted as a string for storage.
+     */
     public String taskText() {
         String isComplete = this.isDone ? "1" : "0";
         String taskText = "todo " + isComplete + " " + this.description;
         return taskText;
     }
 
-
+    /**
+     * Parses a task from stored text format and creates the appropriate task type.
+     *
+     * @param task The stored task string to parse.
+     * @return The parsed Task object of the appropriate subtype.
+     */
     public static Task parseTask(String task){
         if(task.startsWith("T")){
             String[] description = task.split(" \\| ");
@@ -51,6 +63,10 @@ public class Task {
             throw new RuntimeException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event)");
         }
     }
+
+/**
+ * Creates a task from user input command and returns the appropriate task type.
+ */
     public static Task checkTask(String task) {
         if(task.startsWith("todo")){
             String description = task.substring(4);

@@ -2,6 +2,10 @@ package Broccoli.Tasks;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a task with a specific deadline and time.
+ * Extends the base Task class.
+ */
 public class DeadlineTask extends Task{
         private String dueTime;
         private String exactTime;
@@ -48,6 +52,11 @@ public class DeadlineTask extends Task{
             this.isDone = isDone;
         }
 
+    /**
+     * Returns the formatted text representation for file storage.
+     *
+     * @return The todo task formatted as a string for storage.
+     */
     @Override
     public String taskText() {
         String isComplete = this.isDone ? "1" : "0";

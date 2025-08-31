@@ -1,5 +1,9 @@
 package Broccoli.Tasks;
 
+/**
+ * Represents a task that occurs during a specific time period.
+ * Extends the base Task class.
+ */
 public class EventTask extends Task {
    private String startTime;
    private String endTime;
@@ -31,6 +35,11 @@ public EventTask(String description) {
         this.endTime = endTime;
     }
 
+    /**
+     * Returns the formatted text representation for file storage.
+     *
+     * @return The todo task formatted as a string for storage.
+     */
     @Override
     public String taskText() {
         String isComplete = this.isDone ? "1" : "0";
