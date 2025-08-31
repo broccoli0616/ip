@@ -62,6 +62,16 @@ public class Parser {
                 }
                 continue;
             }
+
+            if(task.trim().equals("find".trim())){
+                try{
+                    this.userInterface.find(taskList, storage);}
+                catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }
+                continue;
+            }
+
             Task newTask = null;
             try{
                 newTask = Task.checkTask(task);

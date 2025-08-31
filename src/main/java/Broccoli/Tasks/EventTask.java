@@ -7,7 +7,7 @@ package Broccoli.Tasks;
 public class EventTask extends Task {
    private String startTime;
    private String endTime;
-   private String description;
+ //  private String description;
 
 
 public EventTask(String description) {
