@@ -36,7 +36,7 @@ public class Ui {
      * Displays the greeting to the user.
      */
  public void greeting() {
-    System.out.println("Hello! Hello! Hello! I'm Broccoli.Broccoli, Your Green Task Buddy!\n" + "Tell me what you gonna do and I will help you track them!\n" + horizontalLine.toString());
+    System.out.println("Hello! Hello! Hello! I'm Broccoli.Your Green Task Buddy!\n" + "Tell me what you gonna do and I will help you track them!\n" + horizontalLine.toString());
 }
 
     /**
