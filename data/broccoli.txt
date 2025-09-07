@@ -1,1 +1,6 @@
-D | 0 |  finish lec  | 06/12/2019/7pm
+T | 0 |  cs2103t ip + tp 
+T | 0 |  st2334 quiz 
+T | 0 |  st2334 tut 
+T | 0 |  bsp1702 tut
+T | 0 |  noc resume 
+T | 0 |  sep search

@@ -13,6 +13,7 @@ public class Ui {
     private Scanner scanner;
     private String horizontalLine;
 
+    @SuppressWarnings("checkstyle:WhitespaceAround")
     public Ui(){
         this.scanner = new Scanner(System.in);
         this.horizontalLine = getHorizontalLine();

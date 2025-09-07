@@ -29,7 +29,7 @@ public class Task {
      *
      * @return The task formatted as a string for storage.
      */
-    public String taskText() {
+    public String taskText(){
         String isComplete = this.isDone ? "1" : "0";
         String taskText = "todo " + isComplete + " " + this.description;
         return taskText;
@@ -71,7 +71,7 @@ public class Task {
 /**
  * Creates a task from user input command and returns the appropriate task type.
  */
-    public static Task checkTask(String task) {
+    public static Task checkTask(String task){
         if(task.startsWith("todo")){
             String description = task.substring(4);
             Task todoTask = null;
