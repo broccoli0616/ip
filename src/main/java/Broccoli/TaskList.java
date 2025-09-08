@@ -33,7 +33,15 @@ public class TaskList {
             counter++;
         }
     }
-
+    public String displayTask() {
+        int counter = 1;
+        String output = "";
+        for(Task task : taskList) {
+           output = output + "\n"+ counter + ". " + task.toString();
+            counter++;
+        }
+        return output;
+    }
     public ArrayList<Task> getList(){
         return this.taskList;
 

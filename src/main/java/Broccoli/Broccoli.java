@@ -24,7 +24,9 @@ public class Broccoli {
         this.tasklist = new TaskList(storage.getTaskList());
         this.parser = new Parser(storage, userInterface,scanner);
     }
-
+    public String getResponse(String input) {
+        return parser.echo(input, this.tasklist);
+    }
     /**
      * Starts the Broccoli task tracking application.
      * Displays greeting and begins the main interaction loop.
@@ -35,6 +37,6 @@ public class Broccoli {
         Broccoli broccoli = new Broccoli();
         System.out.println(broccoli.userInterface.getHorizontalLine());
         broccoli.userInterface.greeting();
-        broccoli.parser.echo(broccoli.tasklist);
+        broccoli.parser.echo("", broccoli.tasklist);
     }
 }

@@ -3,6 +3,7 @@ package Broccoli;
 import Broccoli.Tasks.Task;
 
 import java.util.Scanner;
+import Broccoli.Command.*;
 
 /**
  * Handles parsing and processing of user input commands.
@@ -13,7 +14,7 @@ public class Parser {
     private Scanner scanner;
     private Ui userInterface;
 
-    public Parser(Storage storage, Ui userInterface, Scanner scanner){
+    public Parser(Storage storage, Ui userInterface, Scanner scanner) {
         this.storage = storage;
         this.userInterface = userInterface;
         this.scanner = scanner;
@@ -25,68 +26,48 @@ public class Parser {
      *
      * @param taskList The task list to operate on.
      */
-    public void echo(TaskList taskList) {
-        String task = "";
-        while(true) {
-            task = scanner.nextLine();
-            if(task.trim().equals("bye")) {
-                this.userInterface.exiting();
-                break;
-            }
-            if(task.equals("list".trim())){
-                this.userInterface.displayList(taskList);
-                continue;
-            }
-            if(task.trim().equals("mark".trim())){
-                try{
-                    this.userInterface.mark(taskList, storage);}
-                catch(RuntimeException e){
-                    System.out.println(e.getMessage());
-                }
-                continue;
-            }
-            if(task.trim().equals("unmark".trim())){
-                try{
-                    this.userInterface.unmark(taskList, storage);}
-                catch(RuntimeException e){
-                    System.out.println(e.getMessage());
-                }
-                continue;
-            }
+    public String echo(String input_1, TaskList taskList) {
 
-            if(task.trim().equals("delete".trim())){
-                try{
-                    this.userInterface.delete(taskList, storage);}
-                catch(RuntimeException e){
-                    System.out.println(e.getMessage());
+        String input = input_1.trim();
+        String[] parts = input.split(" ", 2);
+        String command = parts[0];
+        String argument = parts.length > 1 ? parts[1].trim() : "";
+        try {
+            switch (command.toLowerCase()) {
+            case "bye":
+                return userInterface.exiting();
+            case "list":
+                return userInterface.displayList(taskList);
+            case "mark":
+                if(argument.isEmpty()) {
+                    throw new IllegalArgumentException("Please specify the task number to mark.");
                 }
-                continue;
-            }
-
-            if(task.trim().equals("find".trim())){
-                try{
-                    this.userInterface.find(taskList, storage);}
-                catch(RuntimeException e){
-                    System.out.println(e.getMessage());
+                return new MarkCommand(Integer.parseInt(argument)).execute(taskList, userInterface, storage);
+            case "unmark":
+                if(argument.isEmpty()) {
+                    throw new IllegalArgumentException("Please specify the task number to unmark.");
                 }
-                continue;
+                return new UnmarkCommand(Integer.parseInt(argument)).execute(taskList, userInterface, storage);
+            case "delete":
+                if(argument.isEmpty()) {
+                    throw new IllegalArgumentException("Please specify the task number to delete.");
+                }
+                return new DeleteCommand(Integer.parseInt(argument)).execute(taskList, userInterface, storage);
+            case "find":
+                if(argument.isEmpty()) {
+                    throw new IllegalArgumentException("Please specify the key words to find.");
+                }
+                return new FindCommand(argument).execute(taskList, userInterface, storage);
+            default:
+                if (!input.isEmpty()) {
+                    return new AddCommand(input).execute(taskList, userInterface, storage);
+                } else {
+                    throw new IllegalArgumentException("Invalid command. Please try again.");
+                }
             }
-
-            Task newTask = null;
-            try{
-                newTask = Task.checkTask(task);
-            } catch(RuntimeException e){
-                System.out.println(e.getMessage());
-                continue;
-            }
-            taskList.add(newTask);
-            this.storage.writeToFile();
-            System.out.println(userInterface.getHorizontalLine());
-            System.out.println("Got it. I've added this task:\n" + newTask.toString());
-            int undone = (int) taskList.getList().stream().filter(a -> !a.getDone()).count();
-            System.out.println("Hurry up! You have " + undone + " tasks unfinished!");
-            System.out.println(userInterface.getHorizontalLine().toString());
-
+        } catch (IllegalArgumentException e) {
+            return e.getMessage();
         }
     }
 }
+

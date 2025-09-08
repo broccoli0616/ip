@@ -14,26 +14,26 @@ public class DeadlineTask extends Task{
 
         public DeadlineTask(String description) {
             String test = description;
-            if(description == null|| test.trim().isEmpty()){
-                throw new IllegalArgumentException("Please enter the name of the task!");
-            }
-            if(!description.contains("/by")){
-                throw new IllegalArgumentException("Please enter the deadline!");
-            }
-            String[] information = description.split("/by ");
-            String taskDescription = information[0];
-            this.description = taskDescription;
-            String[] parts = information[1].split("/");
-            if(!(parts.length == 4)){
-                throw new IllegalArgumentException("Please enter a valid due date, eg: DD/MM/YYYY/Exact Time");
-            }
-            this.exactTime = parts[3];
-            this.dueTime = information[1];
-            DateValidatorUsingDateFormat validator = new DateValidatorUsingDateFormat("dd/MM/yyyy");
-            if(!validator.isValid(parts[0]+ "/" + parts[1] + "/" + parts[2]) ){
-                throw new IllegalArgumentException("Please enter a valid due date, eg: DD/MM/YYYY/Exact Time");
-            }
-            this.date = LocalDate.parse(validator.convertDateFormat(dueTime));
+                if (description == null || test.trim().isEmpty()) {
+                    throw new IllegalArgumentException("Please enter the name of the task!");
+                }
+                if (!description.contains("/by")) {
+                    throw new IllegalArgumentException("Please enter the deadline!");
+                }
+                String[] information = description.split("/by ");
+                String taskDescription = information[0];
+                this.description = taskDescription;
+                String[] parts = information[1].split("/");
+                if (!(parts.length == 4)) {
+                    throw new IllegalArgumentException("Please enter a valid due date, eg: DD/MM/YYYY/Exact Time");
+                }
+                this.exactTime = parts[3];
+                this.dueTime = information[1];
+                DateValidatorUsingDateFormat validator = new DateValidatorUsingDateFormat("dd/MM/yyyy");
+                if (!validator.isValid(parts[0] + "/" + parts[1] + "/" + parts[2])) {
+                    throw new IllegalArgumentException("Please enter a valid due date, eg: DD/MM/YYYY/Exact Time");
+                }
+                this.date = LocalDate.parse(validator.convertDateFormat(dueTime));
         }
 
         public DeadlineTask(String description, String dueTime, boolean isDone) {
@@ -51,6 +51,7 @@ public class DeadlineTask extends Task{
             this.date = LocalDate.parse(validator.convertDateFormat(dueTime));
             this.isDone = isDone;
         }
+
 
     /**
      * Returns the formatted text representation for file storage.

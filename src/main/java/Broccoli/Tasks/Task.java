@@ -64,7 +64,7 @@ public class Task {
             Task taskToAdd = new EventTask(taskDescription, eventTime2[0], eventTime2[1],isDone);
             return taskToAdd;
         } else {
-            throw new RuntimeException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event)");
+            throw new IllegalArgumentException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event)");
         }
     }
 
@@ -100,7 +100,7 @@ public class Task {
             }
             return eventTask;
         } else {
-            throw new RuntimeException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event)");
+            throw new IllegalArgumentException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event)");
         }
     }
 

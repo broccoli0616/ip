@@ -22,7 +22,7 @@ public class ParserTest {
         System.setOut(new PrintStream(outputStream));
         Scanner testScanner = new Scanner("bye\n");
         Parser testParser = new Parser(storage, userInterface, testScanner );
-        testParser.echo(taskList);
+        testParser.echo("bye", taskList);
         System.setOut(originalOutput);
         String output = outputStream.toString();
        // System.out.println("captured:" + output);
