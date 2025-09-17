@@ -43,12 +43,12 @@ public EventTask(String description) {
     @Override
     public String taskText() {
         String isComplete = this.isDone ? "1" : "0";
-        String taskText = "T" + " | " + isComplete + " | " + this.description + " | " + this.startTime + "to" + this.endTime;
+        String taskText = "T" + " | " + isComplete + " | " + this.description + " | " + this.startTime + " to " + this.endTime;
         return taskText;
     }
  @Override
  public String toString(){
-     return "[E] " + getStatusIcon() + this.description + "(from: " + startTime + "to: " + endTime+")";
+     return "[E] " + getStatusIcon() + this.description + "(from: " + startTime + " to: " + endTime+")";
  }
 
     public static void main(String[] args){

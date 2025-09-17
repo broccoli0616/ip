@@ -12,20 +12,20 @@ public class Broccoli {
     private Ui userInterface;
     private Storage storage;
     private Parser parser;
-    private TaskList tasklist;
+    private TaskList taskList;
     private Scanner scanner;
 
     public Broccoli() {
         this.scanner = new Scanner(System.in);
         this.userInterface = new Ui();
-        TaskList tasklist1 = new TaskList(new ArrayList<Task>());
-        this.storage = new Storage(tasklist1, "./data/broccoli.txt");
+        TaskList taskList1 = new TaskList(new ArrayList<Task>());
+        this.storage = new Storage(taskList1, "./data/broccoli.txt");
         storage.loadFromFile(storage.getFilePath());
-        this.tasklist = new TaskList(storage.getTaskList());
+        this.taskList = new TaskList(storage.getTaskList());
         this.parser = new Parser(storage, userInterface,scanner);
     }
     public String getResponse(String input) {
-        return parser.echo(input, this.tasklist);
+        return parser.echo(input, this.taskList);
     }
     /**
      * Starts the Broccoli task tracking application.
@@ -37,6 +37,6 @@ public class Broccoli {
         Broccoli broccoli = new Broccoli();
         System.out.println(broccoli.userInterface.getHorizontalLine());
         broccoli.userInterface.greeting();
-        broccoli.parser.echo("", broccoli.tasklist);
+        broccoli.parser.echo("", broccoli.taskList);
     }
 }

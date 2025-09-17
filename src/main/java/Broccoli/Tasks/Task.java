@@ -74,31 +74,30 @@ public class Task {
     public static Task checkTask(String task) {
         if(task.startsWith("todo")){
             String description = task.substring(4);
-            Task todoTask = null;
+          //  Task todoTask = null;
             try{
-           todoTask = new TodoTask(description);
+           Task todoTask = new TodoTask(description);
+                return todoTask;
             } catch (Exception e) {
               throw new IllegalArgumentException(e.getMessage());
             }
-            return todoTask;
         } else if(task.startsWith("deadline")){
             String description = task.substring(8);
-            Task deadlineTask = null;
             try{
-                deadlineTask = new DeadlineTask(description);
+               Task deadlineTask = new DeadlineTask(description);
+                return deadlineTask;
             } catch (Exception e) {
                 throw new IllegalArgumentException(e.getMessage());
             }
-            return deadlineTask;
         } else if(task.startsWith("event")){
             String description = task.substring(5);
-            Task eventTask = null;
+
             try{
-                eventTask = new EventTask(description);
+              Task  eventTask = new EventTask(description);
+                return eventTask;
             } catch (Exception e) {
                 throw new IllegalArgumentException(e.getMessage());
             }
-            return eventTask;
         } else {
             throw new IllegalArgumentException("OOPS! Please enter a correct task start with proper task type(todo/deadline/event)");
         }
