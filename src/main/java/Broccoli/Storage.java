@@ -22,9 +22,12 @@ public class Storage {
     public Storage(TaskList taskList, String filePath){
 
         this.taskList = taskList;
-        this.filePath = "./data/broccoli.txt";
+        this.filePath = filePath;
     }
 
+    public String getFilePath(){
+        return this.filePath;
+    }
     /**
      * Writes all tasks in the task list to the storage file broccoli.txt.
      */
@@ -49,9 +52,9 @@ public class Storage {
      * Loads tasks from the storage file into the task list.
      * Returns if the file doesn't exist.
      */
-    public void loadFromFile(){
+    public void loadFromFile(String filePath){
         try{
-            File file = new File(this.filePath);
+            File file = new File(filePath);
             if(!file.exists()) {
                 return;
             }

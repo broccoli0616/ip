@@ -12,7 +12,7 @@ public class StorageTest {
     Storage testStorage = new Storage(emptyTaskList, "./data/dataForTest.txt");
     @Test
     public void isLoadFromFile_success(){
-        testStorage.loadFromFile();
+        testStorage.loadFromFile(testStorage.getFilePath());
         ArrayList<Task> loadedTasks = testStorage.getTaskList();
        // System.out.println(loadedTasks.get(0).toString());
         assertEquals("[D] [ ]  finish lec (by: Dec 6 2019 7pm)", loadedTasks.get(0).toString());

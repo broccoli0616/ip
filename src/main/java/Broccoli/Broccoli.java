@@ -20,7 +20,7 @@ public class Broccoli {
         this.userInterface = new Ui();
         TaskList tasklist1 = new TaskList(new ArrayList<Task>());
         this.storage = new Storage(tasklist1, "./data/broccoli.txt");
-        storage.loadFromFile();
+        storage.loadFromFile(storage.getFilePath());
         this.tasklist = new TaskList(storage.getTaskList());
         this.parser = new Parser(storage, userInterface,scanner);
     }

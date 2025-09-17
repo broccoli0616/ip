@@ -1,4 +1,4 @@
-D | 0 |  finish lec  | 06/12/2019/7pm
-T | 0 |  lec
-T | 1 |  2334 quiz
+T | 0 |  linkedin
+T | 0 |  cs2103t ip
 T | 0 |  st2334 quiz
+T | 0 |  noc application
