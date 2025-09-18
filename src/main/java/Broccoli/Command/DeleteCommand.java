@@ -17,10 +17,10 @@ public class DeleteCommand extends Command {
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         try{
-        if (index >= taskList.getList().size()) {
+        if (index > taskList.getList().size()) {
             throw new IllegalArgumentException("Task does not exist, please re-enter a valid one!");
         }
-        Task markTask = taskList.getList().get(index);
+        Task markTask = taskList.getList().get(index - 1);
         taskList.remove(index);
         storage.writeToFile();
         int undone = (int) taskList.getList().stream().filter(a -> !a.getDone()).count();

@@ -15,10 +15,10 @@ public class MarkCommand extends Command {
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         try {
-            if (index >= taskList.getList().size()) {
+            if (index > taskList.getList().size()) {
                 throw new IllegalArgumentException("Task does not exist, please re-enter a valid one!");
             }
-            Task markTask = taskList.getList().get(index);
+            Task markTask = taskList.getList().get(index - 1);
             markTask.markAsDone();
             storage.writeToFile();
             String outPut = "Nice! I've marked this task as done:\n" + markTask.toString();

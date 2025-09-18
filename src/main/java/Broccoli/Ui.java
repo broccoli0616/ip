@@ -15,23 +15,6 @@ public class Ui {
 
     public Ui(){
         this.scanner = new Scanner(System.in);
-        this.horizontalLine = getHorizontalLine();
-    }
-
-    /**
-     * Returns a horizontal line string.
-     *
-     * @return A string of dashes.
-     */
-    public String getHorizontalLine(){
-        StringBuilder horizontal = new StringBuilder();
-        int count = 60;
-        char line = '-';
-            while(count >= 0) {
-                horizontal.append(line);
-                count --;
-            }
-      return horizontal.toString();
     }
 
     /**

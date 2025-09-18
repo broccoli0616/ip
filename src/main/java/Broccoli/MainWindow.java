@@ -22,7 +22,7 @@ public class MainWindow extends AnchorPane {
     private Broccoli broccoli;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image broccoliImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     @FXML
     public void initialize() {
@@ -30,8 +30,12 @@ public class MainWindow extends AnchorPane {
     }
 
     /** Injects the Duke instance */
-    public void setDuke(Broccoli d) {
-        broccoli = d;
+    public void setBroccoli(Broccoli d) {
+        this.broccoli = d;
+        String greeting = broccoli.getGreeting();
+        dialogContainer.getChildren().add(
+                DialogBox.getBroccoliDialog(greeting, broccoliImage)
+        );
     }
 
     /**
@@ -45,7 +49,7 @@ public class MainWindow extends AnchorPane {
 
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getBroccoliDialog(response, broccoliImage)
         );
 
         userInput.clear();

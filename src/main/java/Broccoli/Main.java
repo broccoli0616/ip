@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private Broccoli duke = new Broccoli();
+    private Broccoli broccoli = new Broccoli();
 
     @Override
     public void start(Stage stage) {
@@ -36,7 +36,7 @@ public class Main extends Application {
             stage.setScene(scene);
             stage.setMinHeight(220);
             stage.setMinWidth(417);
-            fxmlLoader.<MainWindow>getController().setDuke(duke);  // inject the Duke instance
+            fxmlLoader.<MainWindow>getController().setBroccoli(broccoli);  // inject the Duke instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
