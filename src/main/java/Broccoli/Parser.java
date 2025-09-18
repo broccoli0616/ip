@@ -38,6 +38,8 @@ public class Parser {
                 return userInterface.exiting();
             case "list":
                 return userInterface.displayList(taskList);
+            case "help":
+                return userInterface.displayHelpMessage();
             case "mark":
                 if(argument.isEmpty()) {
                     throw new IllegalArgumentException("Please specify the task number to mark.");

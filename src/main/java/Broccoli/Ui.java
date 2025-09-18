@@ -12,6 +12,23 @@ import java.util.stream.Collectors;
 public class Ui {
     private Scanner scanner;
     private String horizontalLine;
+    private static final String HELP_MESSAGE = "To add a task:\n" +
+                    "1. Specify the task type with:\n" +
+                    "   * todo + task name eg: todo finish lec quiz\n" +
+                    "   * deadline + task name + /by + DD/MM/YYYY/time\n" +
+                    "   * event + task name + /from + time + /to + time\n\n" +
+                    "To check/modify the task list:\n" +
+                    "1. list : display the list of tasks\n" +
+                    "2. mark + task number: mark the respective task with X in front\n" +
+                    "3. unmark + task number: unmark the respective task clearing X in front\n" +
+                    "4. delete + task number: delete the respective task from the task list\n" +
+                    "5. find + key words: sort out respective task with task description match with the key words";
+
+    private static final String GREETING_MESSAGE = "Hello! Hello! Hello! I'm Broccoli.Your Green Task Buddy!\n" +
+                                                   "Tell me what you gonna do and I will help you track them!\n" +
+                                                    "Enter (help), I will let you know how to use the app";
+
+    private static final String EXITING_MESSAGE = "Bye! Wish you come back with tasks done!\n";
 
     public Ui(){
         this.scanner = new Scanner(System.in);
@@ -38,14 +55,14 @@ public class Ui {
      * Displays the greeting to the user.
      */
  public String greeting() {
-    return "Hello! Hello! Hello! I'm Broccoli.Your Green Task Buddy!\n" + "Tell me what you gonna do and I will help you track them!\n";
-}
+     return GREETING_MESSAGE;
+ }
 
     /**
      * Displays the goodbye message to the user.
      */
  public String exiting() {
-     return "Bye! Wish you come back with tasks done!\n";
+     return EXITING_MESSAGE;
  }
 
     /**
@@ -57,6 +74,10 @@ public class Ui {
        return "Quickly go and finish all the UNDONE tasks!" +"\n"+ taskList.displayTask();
     }
 
-        }
+    public String displayHelpMessage(){
+        return HELP_MESSAGE;
+    }
+
+}
 
 
