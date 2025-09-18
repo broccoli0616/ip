@@ -22,21 +22,31 @@ public class Broccoli {
         this.storage = new Storage(taskList1, "./data/broccoli.txt");
         storage.loadFromFile(storage.getFilePath());
         this.taskList = new TaskList(storage.getTaskList());
-        this.parser = new Parser(storage, userInterface,scanner);
+        this.parser = new Parser(storage, userInterface, scanner);
     }
+
     public String getResponse(String input) {
-        return parser.echo(input, this.taskList);
+        return parser.processCommand(input, this.taskList);
     }
+
     /**
-     * Starts the Broccoli task tracking application.
-     * Displays greeting and begins the main interaction loop.
-     *
-     * @param args Command line arguments.
+     * Returns the initial greeting message to display when the app starts.
+     * @return The greeting message string
      */
-    public static void main(String[] args) {
-        Broccoli broccoli = new Broccoli();
-        System.out.println(broccoli.userInterface.getHorizontalLine());
-        broccoli.userInterface.greeting();
-        broccoli.parser.echo("", broccoli.taskList);
+    public String getGreeting() {
+        return userInterface.greeting();
     }
 }
+//    /**
+//     * Starts the Broccoli task tracking application.
+//     * Displays greeting and begins the main interaction loop.
+//     *
+//     * @param args Command line arguments.
+//     */
+//    public static void main(String[] args) {
+//        Broccoli broccoli = new Broccoli();
+//        System.out.println(broccoli.userInterface.getHorizontalLine());
+//        broccoli.userInterface.greeting();
+//        broccoli.parser.echo("", broccoli.taskList);
+//    }
+//}

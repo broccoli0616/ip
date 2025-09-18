@@ -23,15 +23,16 @@ public class Parser {
         this.scanner = scanner;
     }
 
+
     /**
      * Processes user input commands in a continuous loop until exit.
      * Handles commands like list, mark, unmark, delete, and task addition.
      *
      * @param taskList The task list to operate on.
      */
-    public String echo(String input_1, TaskList taskList) {
+    public String processCommand(String userInput, TaskList taskList) {
 
-        String input = input_1.trim();
+        String input = userInput.trim();
         String[] parts = input.split(" ", 2);
         String command = parts[0];
         String argument = parts.length > 1 ? parts[1].trim() : "";
@@ -42,34 +43,32 @@ public class Parser {
             case "list":
                 return userInterface.displayList(taskList);
             case "mark":
-                if(argument.isEmpty()) {
-                    throw new IllegalArgumentException("Please specify the task number to mark.");
-                }
+                validateArgument(argument, "mark");
                 return new MarkCommand(Integer.parseInt(argument)).execute(taskList, userInterface, storage);
             case "unmark":
-                if(argument.isEmpty()) {
-                    throw new IllegalArgumentException("Please specify the task number to unmark.");
-                }
+                validateArgument(argument, "unmark");
                 return new UnmarkCommand(Integer.parseInt(argument)).execute(taskList, userInterface, storage);
             case "delete":
-                if(argument.isEmpty()) {
-                    throw new IllegalArgumentException("Please specify the task number to delete.");
-                }
+                validateArgument(argument, "delete");
                 return new DeleteCommand(Integer.parseInt(argument)).execute(taskList, userInterface, storage);
             case "find":
-                if(argument.isEmpty()) {
-                    throw new IllegalArgumentException("Please specify the key words to find.");
-                }
+                validateArgument(argument, "find");
                 return new FindCommand(argument).execute(taskList, userInterface, storage);
             default:
                 if (!input.isEmpty()) {
                     return new AddCommand(input).execute(taskList, userInterface, storage);
                 } else {
-                    throw new IllegalArgumentException("Invalid command. Please try again.");
+                    throw new IllegalArgumentException("Please do not give me any empty command");
                 }
             }
         } catch (IllegalArgumentException e) {
             return e.getMessage();
+        }
+    }
+
+    private void validateArgument(String argument, String description) {
+        if (argument.isEmpty()) {
+            throw new IllegalArgumentException("Please specify the task number to " + description +".");
         }
     }
 }

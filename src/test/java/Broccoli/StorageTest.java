@@ -11,7 +11,7 @@ public class StorageTest {
     TaskList emptyTaskList = new TaskList(new ArrayList<Task>());
     Storage testStorage = new Storage(emptyTaskList, "./data/dataForTest.txt");
     @Test
-    public void isLoadFromFile_success(){
+    public void isLoadFromFile_Success(){
         testStorage.loadFromFile(testStorage.getFilePath());
         ArrayList<Task> loadedTasks = testStorage.getTaskList();
        // System.out.println(loadedTasks.get(0).toString());

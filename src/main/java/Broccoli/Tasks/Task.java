@@ -74,7 +74,6 @@ public class Task {
     public static Task checkTask(String task) {
         if(task.startsWith("todo")){
             String description = task.substring(4);
-          //  Task todoTask = null;
             try{
            Task todoTask = new TodoTask(description);
                 return todoTask;
@@ -91,7 +90,6 @@ public class Task {
             }
         } else if(task.startsWith("event")){
             String description = task.substring(5);
-
             try{
               Task  eventTask = new EventTask(description);
                 return eventTask;
