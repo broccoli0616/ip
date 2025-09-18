@@ -42,6 +42,8 @@ public class Parser {
                 return userInterface.exiting();
             case "list":
                 return userInterface.displayList(taskList);
+            case "help":
+                return userInterface.displayHelpMessage();
             case "mark":
                 validateArgument(argument, "mark");
                 return new MarkCommand(Integer.parseInt(argument)).execute(taskList, userInterface, storage);
