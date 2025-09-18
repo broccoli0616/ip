@@ -15,6 +15,9 @@ public class Parser {
     private Ui userInterface;
 
     public Parser(Storage storage, Ui userInterface, Scanner scanner) {
+        assert storage != null : "Storage cannot be null";
+        assert userInterface != null : "User interface cannot be null";
+        assert scanner != null : "Scanner cannot be null";
         this.storage = storage;
         this.userInterface = userInterface;
         this.scanner = scanner;

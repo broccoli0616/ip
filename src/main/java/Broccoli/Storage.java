@@ -19,8 +19,11 @@ import java.util.Scanner;
 public class Storage {
     private TaskList taskList;
     public String filePath;
-    public Storage(TaskList taskList, String filePath){
 
+    public Storage(TaskList taskList, String filePath){
+        assert taskList != null : "TaskList cannot be null";
+        assert filePath != null : "File path cannot be null";
+        assert !filePath.trim().isEmpty() : "File path cannot be empty";
         this.taskList = taskList;
         this.filePath = filePath;
     }
