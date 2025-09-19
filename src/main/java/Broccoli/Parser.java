@@ -25,10 +25,14 @@ public class Parser {
 
 
     /**
-     * Processes user input commands in a continuous loop until exit.
-     * Handles commands like list, mark, unmark, delete, and task addition.
+     * Processes a single user input command and returns the appropriate response.
+     * Handles commands like list, mark, unmark, delete, find, and task addition.
+     * Commands are case-insensitive and parsed to extract command and arguments.
      *
-     * @param taskList The task list to operate on.
+     * @param userInput The raw user input string to be processed
+     * @param taskList The task list to operate on for command execution
+     * @return A string response message indicating the result of the command
+     * @throws IllegalArgumentException if the command format is invalid or arguments are missing
      */
     public String processCommand(String userInput, TaskList taskList) {
 
@@ -68,6 +72,14 @@ public class Parser {
         }
     }
 
+    /**
+     * Validates that the provided argument is not empty for the specified command.
+     * Used internally to ensure commands that require arguments have valid input.
+     *
+     * @param argument The argument string to validate
+     * @param description The command description for error message formatting
+     * @throws IllegalArgumentException if the argument is empty or null
+     */
     private void validateArgument(String argument, String description) {
         if (argument.isEmpty()) {
             throw new IllegalArgumentException("Please specify the task number to " + description +".");

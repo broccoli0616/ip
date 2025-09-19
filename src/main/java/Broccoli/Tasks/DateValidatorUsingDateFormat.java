@@ -2,6 +2,10 @@ package Broccoli.Tasks;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+
+//@@author broccoli0616-reused
+//Reused from https://www.baeldung.com/java-string-valid-date
+// with minor modifications
 public class DateValidatorUsingDateFormat implements DateValidator {
     private String dateFormat;
 
@@ -36,3 +40,5 @@ public class DateValidatorUsingDateFormat implements DateValidator {
         return true;
     }
 }
+
+//@@author:Chandra Prakash

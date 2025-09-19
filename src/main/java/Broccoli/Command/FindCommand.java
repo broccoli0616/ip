@@ -16,6 +16,19 @@ public class FindCommand extends Command {
         this.keyWords = keyWords;
     }
 
+
+    /**
+     * Executes the find command to search for matching tasks.
+     * Filters the task list to find all tasks whose descriptions contain
+     * the specified keywords. If matches are found, displays them in a
+     * formatted list. If no matches are found, returns an error message.
+     *
+     * @param taskList The task list to search through
+     * @param ui The user interface for displaying messages
+     * @param storage The storage system (not modified by this command)
+     * @return A formatted list of matching tasks with their descriptions,
+     *         or an error message if no matching tasks are found
+     */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         try {

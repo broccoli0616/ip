@@ -35,28 +35,43 @@ public class Ui {
     }
 
     /**
-     * Displays the greeting to the user.
+     * Returns the greeting message displayed to users when the application starts.
+     * Provides a welcoming introduction to the Broccoli task management system.
+     *
+     * @return A string containing the greeting message with usage instructions
      */
  public String greeting() {
      return GREETING_MESSAGE;
  }
 
     /**
-     * Displays the goodbye message to the user.
+     * Returns the goodbye message displayed when users exit the application.
+     * Provides a friendly farewell message encouraging task completion.
+     *
+     * @return A string containing the exit message
      */
  public String exiting() {
      return EXITING_MESSAGE;
  }
 
     /**
-     * Displays all tasks in the task list.
+     * Returns a formatted display of all tasks in the provided task list.
+     * Includes a motivational header message followed by the numbered task list.
      *
-     * @param taskList The task list to display.
+     * @param taskList The TaskList containing tasks to be displayed
+     * @return A string containing the formatted task list with header message
      */
     public String displayList(TaskList taskList){
        return "Quickly go and finish all the UNDONE tasks!" +"\n"+ taskList.displayTask();
     }
 
+
+    /**
+     * Returns the help message containing usage instructions for the application.
+     * Provides detailed information about available commands and their syntax.
+     *
+     * @return A string containing comprehensive help documentation
+     */
     public String displayHelpMessage(){
         return HELP_MESSAGE;
     }

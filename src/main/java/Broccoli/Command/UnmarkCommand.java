@@ -13,6 +13,19 @@ public class UnmarkCommand extends Command {
         this.index = index;
     }
 
+
+    /**
+     * Executes the unmark command to set a task as not completed.
+     * Validates the index, retrieves the specified task, marks it as undone,
+     * saves the updated task list to storage, and returns a confirmation
+     * message showing the task with its updated status icon.
+     *
+     * @param taskList The task list containing the task to be unmarked
+     * @param ui The user interface for displaying messages
+     * @param storage The storage system for persisting the updated task status
+     * @return A confirmation message showing the task has been marked as not done,
+     *         or an error message if the index is invalid
+     */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         try{

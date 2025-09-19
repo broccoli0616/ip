@@ -14,6 +14,18 @@ public class DeleteCommand extends Command {
         this.index = index;
     }
 
+    /**
+     * Executes the delete command to remove a task from the list.
+     * Validates the index, retrieves the task to be deleted, removes it from
+     * the task list, saves the updated list to storage, and returns a confirmation
+     * message along with the count of remaining unfinished tasks.
+     *
+     * @param taskList The task list to remove the task from
+     * @param ui The user interface for displaying messages
+     * @param storage The storage system for persisting tasks
+     * @return A confirmation message showing the deleted task and remaining unfinished count,
+     *         or an error message if the index is invalid
+     */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         try{

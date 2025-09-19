@@ -31,8 +31,13 @@ public class Storage {
     public String getFilePath(){
         return this.filePath;
     }
+
+
     /**
-     * Writes all tasks in the task list to the storage file broccoli.txt.
+     * Writes all tasks from the task list to the storage file.
+     * Creates the data directory if it doesn't exist. Each task is written
+     * on a separate line using the task's text representation.
+     * Handles IOException by printing error message to console.
      */
     public void writeToFile() {
         try {
@@ -52,8 +57,12 @@ public class Storage {
     }
 
     /**
-     * Loads tasks from the storage file into the task list.
-     * Returns if the file doesn't exist.
+     * Loads tasks from the specified file into the task list.
+     * Parses each line of the file as a task and adds valid tasks to the list.
+     * Returns immediately if the file doesn't exist.
+     *
+     * @param filePath The path to the file containing saved tasks
+     * @throws FileNotFoundException handled internally with error message output
      */
     public void loadFromFile(String filePath){
         try{
