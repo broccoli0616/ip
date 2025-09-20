@@ -1,9 +1,7 @@
-package Broccoli;
-
-import Broccoli.Tasks.Task;
+package broccoli;
 
 import java.util.Scanner;
-import Broccoli.Command.*;
+import broccoli.Command.*;
 
 /**
  * Handles parsing and processing of user input commands.

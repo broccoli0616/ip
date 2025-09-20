@@ -1,6 +1,6 @@
-package Broccoli;
+package broccoli;
 
-import Broccoli.Tasks.Task;
+import broccoli.Tasks.Task;
 
 import java.util.ArrayList;
 

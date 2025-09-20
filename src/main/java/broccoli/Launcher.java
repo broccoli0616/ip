@@ -1,4 +1,4 @@
-package Broccoli;
+package broccoli;
 
 import javafx.application.Application;
 

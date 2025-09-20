@@ -1,4 +1,4 @@
-package Broccoli.Tasks;
+package broccoli.Tasks;
 
 /**
  * Represents a task that occurs during a specific time period.

@@ -1,12 +1,12 @@
 
-package Broccoli.Command;
+package broccoli.Command;
 
-import Broccoli.Tasks.Task;
+import broccoli.Tasks.Task;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
-import Broccoli.Storage;
-import Broccoli.TaskList;
-import Broccoli.Ui;
+import broccoli.Storage;
+import broccoli.TaskList;
+import broccoli.Ui;
 
 
 public class FindCommand extends Command {

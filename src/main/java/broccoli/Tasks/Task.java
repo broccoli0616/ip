@@ -1,4 +1,4 @@
-package Broccoli.Tasks;
+package broccoli.Tasks;
 
 /**
  * Represents a basic task with completion status and description.

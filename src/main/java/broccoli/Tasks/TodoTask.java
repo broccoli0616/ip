@@ -1,4 +1,4 @@
-package Broccoli.Tasks;
+package broccoli.Tasks;
 
 /**
  * Represents a simple todo task.

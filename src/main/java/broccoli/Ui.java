@@ -1,10 +1,6 @@
-package Broccoli;
+package broccoli;
 
-import Broccoli.Tasks.Task;
-
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 /**
  * Handles user interface interactions and display formatting.
