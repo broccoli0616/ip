@@ -13,7 +13,7 @@ public class ParserTest {
   Storage storage = new Storage(taskList, "./data/dataForTest.txt");
   Ui userInterface = new Ui();
     @Test
-    public void isEcho_withByeCommand_success(){
+    public void isProcessCommmand_withByeCommand_success(){
         Scanner testScanner = new Scanner("bye\n");
         Parser testParser = new Parser(storage, userInterface, testScanner );
         String output = testParser.processCommand("bye", taskList);

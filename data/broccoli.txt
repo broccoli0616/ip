@@ -1,6 +1,3 @@
-T | 0 |  linkedin
-T | 0 |  cs2103t ip
-T | 0 |  st2334 quiz
-D | 1 |  compblub  | 22/09/2025/8pm
-T | 0 |  lecnotes xxx
-T | 0 |  birthday part  |  9.22  to 10.30
+T | 0 |  watch lecture
+D | 0 |  submit application  | 29/09/2025/2359pm
+D | 0 |  finish quiz  | 20/09/2025/8pm

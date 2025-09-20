@@ -37,16 +37,3 @@ public class Broccoli {
         return userInterface.greeting();
     }
 }
-//    /**
-//     * Starts the Broccoli task tracking application.
-//     * Displays greeting and begins the main interaction loop.
-//     *
-//     * @param args Command line arguments.
-//     */
-//    public static void main(String[] args) {
-//        Broccoli broccoli = new Broccoli();
-//        System.out.println(broccoli.userInterface.getHorizontalLine());
-//        broccoli.userInterface.greeting();
-//        broccoli.parser.echo("", broccoli.taskList);
-//    }
-//}

@@ -4,3 +4,5 @@ Sometimes, AI has better egle eyes than me, and help me found out the naming iss
 
 JavaDoc & Method Description: When I first tried out to write method description for my non-trial methods code, I found very lost. I tend to write very lengthy JavaDoc, despite that many words, I felt like I still could not express what and why the method is. I will send my code with JavaDoc to Claude and help me refine my JavaDoc Comment to a more clear and precise one.
 It worked quite well, and with more example seen, I think I gradually understood how to write clear and precide JavaDoc
+
+Gemini helped me generated the image of Broccoli'profile 

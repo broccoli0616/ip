@@ -65,4 +65,8 @@ public class TaskList {
         return this.taskList;
 
     }
+
+    public boolean isEmptyList(){
+        return taskList.isEmpty();
+    }
 }

@@ -57,8 +57,12 @@ public class Ui {
      * @param taskList The TaskList containing tasks to be displayed
      * @return A string containing the formatted task list with header message
      */
-    public String displayList(TaskList taskList){
-       return "Quickly go and finish all the UNDONE tasks!" +"\n"+ taskList.displayTask();
+    public String displayList(TaskList taskList) {
+        if (taskList.isEmptyList()) {
+            return "There are no tasks on track!";
+        } else {
+            return "Quickly go and finish all the UNDONE tasks!" + "\n" + taskList.displayTask();
+        }
     }
 
 
