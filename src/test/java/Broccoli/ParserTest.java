@@ -16,7 +16,7 @@ public class ParserTest {
     public void isEcho_withByeCommand_success(){
         Scanner testScanner = new Scanner("bye\n");
         Parser testParser = new Parser(storage, userInterface, testScanner );
-        String output = testParser.echo("bye", taskList);
+        String output = testParser.processCommand("bye", taskList);
        // System.out.println("captured:" + output);
         assertTrue(output.contains("Bye! Wish you come back with tasks done!"));
     }

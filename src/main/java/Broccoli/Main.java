@@ -36,6 +36,7 @@ public class Main extends Application {
             stage.setScene(scene);
             stage.setMinHeight(220);
             stage.setMinWidth(417);
+            stage.setTitle("Botccoli");
             fxmlLoader.<MainWindow>getController().setBroccoli(broccoli);  // inject the Duke instance
             stage.show();
         } catch (IOException e) {
