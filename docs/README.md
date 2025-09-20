@@ -7,6 +7,7 @@ Botccoli frees your mind of having to remember things you need to do. It's a:
 - **easy to learn** and use
 - **FAST** *SUPER FAST* to operate
 
+![Userinterface](./Ui.png)
 
 ### For Regular Users
 1. Download the latest release JAR file
