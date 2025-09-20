@@ -11,7 +11,10 @@ Botccoli frees your mind of having to remember things you need to do. It's a:
 
 ### For Regular Users
 1. Download the latest release JAR file
-2. Double-click the downloaded file to launch the application
+2. Double-click the downloaded file to launch the application or Copy the jar file into an empty folder, Open a command window in that folder, enter : 
+```
+java -jar "broccoli.jar"
+```
 3. Start adding your tasks!
 
 ### For Java Programmers
