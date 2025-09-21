@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.application.Platform;
 /**
  * Controller for the main GUI.
  */
@@ -53,5 +54,11 @@ public class MainWindow extends AnchorPane {
         );
 
         userInput.clear();
+
+        if (input.trim().toLowerCase().equals("bye")) {
+            javafx.application.Platform.runLater(() -> {
+                javafx.application.Platform.exit();
+            });
+        }
     }
 }
