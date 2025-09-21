@@ -12,7 +12,7 @@ Botccoli frees your mind of having to remember things you need to do. It's a:
 1. Download the latest release JAR file [here](https://github.com/broccoli0616/ip/releases/tag/A-BetterGui)
 2. Double-click the downloaded file to launch the application or Copy the jar file into an empty folder, Open a command window in that folder, enter:
 ```
-java -jar "broccoli.jar"
+java -jar "botccoli.jar"
 ```
 3. Start adding your tasks!
 
